@@ -1,0 +1,13 @@
+[{
+		"name": "gdFavoriteGames",
+		"script": "/srv/gd_favorite_games/app.js",
+		"cwd": "/srv/gd_favorite_games",
+		"error_file": "/var/log/gd_favorite_games/gd_favorite_games-err.log",
+		"out_file": "/var/log/gd_favorite_games/gd_favorite_games-out.log",
+		"exec_mode": "cluster_mode",
+		"env": {
+			"NODE_ENV": "production"
+		},
+		"run_as_user": "node",
+		"run_as_group": "www"
+	}]
