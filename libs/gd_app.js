@@ -58,7 +58,16 @@ function gdApp() {
 		});
 	}
 	
+	function observeDatabseConfig() {
+		var observer = require('./simple_file_observer').observe(gdConfig.get('mysqlConfigFile'));
+		observer.on('change', function() {
+			gdLogger.info('Database config file has changed. Restarting...');
+			process.exit();
+		});
+	} 
+	
 	this.start = function() {
+		observeDatabseConfig();
 		initExpress();
 	}
 	
