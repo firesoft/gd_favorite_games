@@ -11,7 +11,6 @@ function get(params, callback) {
 		return callback(null, games);
 	}
 	getFromDB(playerId, function(err, data) {
-		console.log(data);
 		if (err || !data) return callback(err, []);
 		games = processDBData(data);
 		putToCache(playerId, games);
@@ -21,7 +20,7 @@ function get(params, callback) {
 }
 
 function update(params, callback) {
-	query = 'CALL `ganymede_social`.update_most_popular_games(' + $params.playerId + ',' + params.gameNumber  + ',' + params.timeSpent + ')';
+	var query = 'CALL `ganymede_social`.update_most_popular_games(' + params.playerId + ',' + params.gameNumber  + ',' + params.timeSpent + ')';
 	gdMysql.query(query, 'master', callback);
 }
 
